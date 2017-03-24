@@ -7,24 +7,33 @@
     <h:head>
         <title>Facelet Title</title>
     </h:head>
-    <h:body>
+    <h:body style="font-family: Arial">
+        <h:form>
+            <h:panelGroup id="logout" style="text-align: right">
+                <h:outputLabel value="#{controlUsuario.usuarioLogeado()}"/>
+                <h:commandLink value="Logout" action="#{controlUsuario.logout}"/><br/><br/>
+                <h:commandLink value="Atras" action="/UsuarioLista.xhtml?faces-redirect=true"/><br/>
+            </h:panelGroup>
+        </h:form>
+        
         <f:view>
-
-
             <h:form>
-                <h1><h:outputText value="Crear, Modificar Usuario"/></h1>
+                <p:growl autoUpdate="true" showDetail="true"/>
+                <h1><h:outputText value="Crear/Editar, Usuario"/></h1>
                 <p:panelGrid columns="2">
                     <p:outputLabel value="Idusuario:" for="idusuario" />
                     <p:inputText id="idusuario" value="#{controlUsuario.usuario.idusuario}" title="Idusuario" required="true" requiredMessage="The Idusuario field is required."/>
                     <p:outputLabel value="Pais:" for="pais" />
-                    <p:selectOneMenu id="pais" value="#{controlUsuario.usuario.pais}" required="true" requiredMessage="The Pais field is required.">
+                    <p:selectOneMenu id="pais" value="#{controlUsuario.pais.idpais}" required="true" requiredMessage="The Pais field is required.">
                         <!-- TODO: update below reference to list of available items-->
-                        <f:selectItems value="#{controlUsuario.paises}" var="c" itemLabel="#{c.pais}" itemValue="#{c.idpais}"/>
+                        <f:selectItems value="#{controlUsuario.paises}" var="c" 
+                                       itemLabel="#{c.pais}" itemValue="#{c.idpais}"/>
                     </p:selectOneMenu>
                     <p:outputLabel value="Rol:" for="rol" />
-                    <p:selectOneMenu id="rol" value="#{controlUsuario.usuario.rol}" required="true" requiredMessage="The Rol field is required.">
+                    <p:selectOneMenu id="rol" value="#{controlUsuario.rol.idrol}" required="true" requiredMessage="The Rol field is required.">
                         <!-- TODO: update below reference to list of available items-->
-                        <f:selectItems value="#{controlUsuario.roles}" var="c" itemLabel="#{c.rol}" itemValue="#{c.rol}"/>
+                        <f:selectItems value="#{controlUsuario.roles}" var="c" 
+                                       itemLabel="#{c.rol}" itemValue="#{c.idrol}"/>
                     </p:selectOneMenu>
                     <p:outputLabel value="Nombres:" for="nombres" />
                     <p:inputText id="nombres" value="#{controlUsuario.usuario.nombres}" title="Nombres" required="true" requiredMessage="The Nombres field is required."/>
@@ -40,7 +49,6 @@
                 </p:panelGrid>
             </h:form>
         </f:view>
-
     </h:body>
 </html>
 

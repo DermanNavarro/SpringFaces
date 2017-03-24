@@ -8,72 +8,25 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        <h:outputLabel value="#{controlHola.saludar()}"/><br/>
-        <h:outputLabel value="#{controlHola.hola()}"/>
+        <!--h:outputLabel value="#{controlHola.saludar()}"/><br/>
+        <h:outputLabel value="#{controlHola.hola()}"/-->
         
         <f:view>
-
-
             <h:form>
-                <h1><h:outputText value="List"/></h1>
-                <p:commandButton value="Nuevo" action="UsuarioForm?faces-redirect=true"/>
-                
-                
-                
-                
-                <p:dataTable value="#{controlUsuario.usuarios}" var="item">
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="Idusuario"/>
-                        </f:facet>
-                        <h:outputText value="#{item.idusuario}"/>
-                    </p:column>
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="Pais"/>
-                        </f:facet>
-                        <h:outputText value="#{item.pais.pais}"/>
-                    </p:column>
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="Rol"/>
-                        </f:facet>
-                        <h:outputText value="#{item.rol.rol}"/>
-                    </p:column>
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="Nombres"/>
-                        </f:facet>
-                        <h:outputText value="#{item.nombres}"/>
-                    </p:column>
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="Apellidos"/>
-                        </f:facet>
-                        <h:outputText value="#{item.apellidos}"/>
-                    </p:column>
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="Email"/>
-                        </f:facet>
-                        <h:outputText value="#{item.email}"/>
-                    </p:column>
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="Telefono"/>
-                        </f:facet>
-                        <h:outputText value="#{item.telefono}"/>
-                    </p:column>
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="Clave"/>
-                        </f:facet>
-                        <h:outputText value="#{item.clave}"/>
-                    </p:column>
-                </p:dataTable>
+                <h:panelGrid columns="3">
+                    <h:outputLabel value="Idusuario:" for="idusuario" />
+                    <h:inputText id="idusuario" value="#{controlUsuario.usuario.idusuario}" title="Idusuario"/>
+                    <h:message for="idusuario" style="color:red"/>
+                    <h:outputLabel value="Clave:" for="clave" />
+                    <h:inputText id="clave" value="#{controlUsuario.usuario.clave}" title="Clave"/>
+                    <h:message for="clave" style="color:red"/>
+                    <h:commandButton value="Login" action="#{controlUsuario.login()}"/>
+                </h:panelGrid>
+                <p:growl autoUpdate="true" showDetail="true"/>
             </h:form>
         </f:view>
-
+        
+        <!--h:outputLabel value="#{controlUsuario.msg}"/-->
     </h:body>
 </html>
 
